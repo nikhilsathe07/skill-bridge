@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header.jsx';
+import CourseDetail from './pages/CourseDetail.jsx';
+import Login from './pages/Login.jsx';
+import MentorProfiles from './pages/MentorProfiles.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import UploadWork from './pages/UploadWork.jsx';
+import Forum from './pages/Forum.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Placeholders for your friend's pages
+function Home() {
+  return <h1>Home Page (teammate are working)</h1>;
+}
+function BrowseCourses() {
+  return <h1>Browse Courses (teammate are working)</h1>;
 }
 
-export default App
+function App() {
+  return (
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<BrowseCourses />} />
+        <Route path="/course/:id" element={<CourseDetail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/mentors" element={<MentorProfiles />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/upload" element={<UploadWork />} />
+        <Route path="/forum" element={<Forum />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
